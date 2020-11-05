@@ -5,6 +5,7 @@ import { BackendService } from 'src/app/Servicos/backend.service';
 import { AuthService } from 'src/app/Servicos/auth.service';
 import { Router } from '@angular/router';
 import { NovoUsuario } from 'src/app/modelos/usuario';
+import { Registro } from 'src/app/Modelos/registro';
 
 @Component({
   selector: 'app-tela-login',
@@ -28,7 +29,7 @@ export class TelaLoginComponent implements OnInit {
       login.append("file", this.dadosLogin.get('foto').value);
       login.append("userName", this.dadosLogin.get('nome').value);
       login.append("password", this.dadosLogin.get('senha').value);
-      
+
       console.log(login);
 
       this.bs.Login(login);

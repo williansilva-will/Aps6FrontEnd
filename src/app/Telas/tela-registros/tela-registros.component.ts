@@ -4,6 +4,7 @@ import { ValidacoesService } from 'src/app/Servicos/validacoes.service';
 import { Registro, NovoRegistro} from 'src/app/Modelos/registro';
 import { BackendService } from 'src/app/Servicos/backend.service';
 import { Router } from '@angular/router';
+import { UsuarioAtual } from 'src/app/Modelos/usuario';
 
 @Component({
   selector: 'app-tela-registros',
@@ -14,19 +15,26 @@ export class TelaRegistrosComponent implements OnInit {
 
   listaRegistros: Registro[];
   novoRegistro: FormGroup;
+  user: UsuarioAtual;
 
   constructor(private fb: FormBuilder, private bs: BackendService, private route: Router) { }
 
   ngOnInit(): void {
     this.ApanharRegistros();
     this.AddRegistro();
+    this.GetUsuario();
   }
 
   ApanharRegistros(){
-    this.bs.getRegistros().subscribe(data =>{
+    var userName = this.user.userName;
+    this.bs.getRegistros(userName).subscribe(data =>{
       this.listaRegistros = data;
       this.recarregarPagina();
     });
+  }
+
+  GetUsuario(){
+    return this.user = this.bs.PegarUsuario();
   }
 
   recarregarPagina() {
@@ -45,9 +53,6 @@ export class TelaRegistrosComponent implements OnInit {
 
     this.bs.postRegistro(registro);
     
-    alert(`O registro foi cadastrado com sucesso. \n Dados: ${JSON.stringify(registro)}`);
-    console.log(registro.get("descricao"));
-
     this.novoRegistro.reset();
     this.recarregarPagina();
     }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioAtual } from 'src/app/Modelos/usuario';
 import { BackendService } from 'src/app/Servicos/backend.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { BackendService } from 'src/app/Servicos/backend.service';
 })
 export class HomeComponent implements OnInit {
 
-  usuarioAtual: any;
+  usuarioAtual: UsuarioAtual;
 
   constructor(private bs: BackendService) { }
 

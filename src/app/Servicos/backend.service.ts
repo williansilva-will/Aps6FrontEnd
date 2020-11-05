@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { NovoUsuario, Usuario} from 'src/app/Modelos/usuario';
+import { NovoUsuario, UsuarioAtual} from 'src/app/Modelos/usuario';
 import { NovoRegistro, Registro} from 'src/app/Modelos/registro';
 import { Router } from '@angular/router';
  
@@ -22,9 +22,8 @@ export class BackendService {
   constructor(private http: HttpClient, private route: Router) {
   }
 
-  getRegistros(){
-    const user: any = this.PegarUsuario();
-    return this.http.get<Registro[]>(this.apiUrlRegistro, user.userName);
+  getRegistros(userName: string){
+    return this.http.get<Registro[]>(`${this.apiUrlRegistro}/${userName}`);
   }
   
   postRegistro(registro: FormData){
@@ -60,7 +59,18 @@ export class BackendService {
     return localStorage.getItem('token');
   }
 
-  PegarUsuario(){
-    return localStorage.getItem('user');
+  PegarUsuario(): UsuarioAtual {
+    var user: UsuarioAtual;
+    return user = JSON.parse(localStorage.getItem('user')); 
+  }
+
+  ErrorHandler(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      msg = error.error.message;
+    } else {
+      msg = `Código do erro: ${error.status}\nMensagem: ${error.message}`;
+    }
+    return throwError(msg);
   }
 }

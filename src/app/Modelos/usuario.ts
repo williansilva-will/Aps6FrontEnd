@@ -13,19 +13,13 @@ export class NovoUsuario {
     senha: string;
 }
 
-export class Usuario {
+export class UsuarioAtual {
 
-    constructor(id: number, foto: File, nome: string, nivel: number, senha: string){
-        this.id = id;
-        this.foto = foto;
-        this.nome = nome;
-        this.nivel = nivel;
-        this.senha = senha;
+    constructor(userName: string, password: string){
+        this.userName = userName;
+        this.password = password;
     }
 
-    id: number;
-    foto: File;
-    nome: string;
-    nivel: number;
-    senha: string;
+    userName: string;
+    password: string;
 }
