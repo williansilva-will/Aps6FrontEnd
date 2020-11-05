@@ -1,0 +1,40 @@
+<div class="container-fluid Containergridconfig"> 
+    <br>
+    <div class="container">
+    <div class="row">
+        <h4 class="h4casdastroconfig"><strong>Banco de Registros de Ocorrências</strong></h4>
+    </div>
+    <br>
+    <div><h5>Adicionar Registro</h5>
+    <form [formGroup]="novoRegistro" (ngSubmit)="SalvarRegistro()">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="nivel">Nivel: 
+                    <input type="number" formGroupName="nivel">
+                </label>
+            </div>
+            <div class="col-md-4">
+                <label for="descricao">descrição: 
+                    <input type="text" formGroupName="descricao">
+                </label>
+            </div>
+            <button class="btn btn-primary btn-sm col-md-1" [disabled]="!novoRegistro.valid">Salvar</button>
+        </div>
+    </form>
+    </div>
+    <br>
+    <h5>Tabela de Registros</h5>
+    <div class="row rowconfig">
+        <div class="col-md-2 colconfig"><strong>ID</strong></div>
+        <div class="col-md-2 colconfig"><strong>Nivel</strong></div>
+        <div class="col-md-2 colconfig"><strong>Usuário</strong></div>
+        <div class="col-md-6 colconfig"><strong>Descricao</strong></div>
+    </div>
+    <div class="row rowconfig" *ngFor="let item of listaRegistros">
+        <div class="col-lg-2 colconfig">{{item.id}}</div>
+        <div class="col-lg-2 colconfig">{{item.nivel}}</div>
+        <div class="col-lg-2 colconfig">{{item.userName}}</div>
+        <div class="col-lg-6 colconfig">{{item.descricao}}</div>
+    </div>
+    </div>
+</div>

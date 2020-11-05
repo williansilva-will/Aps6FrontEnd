@@ -1,0 +1,76 @@
+<div class="container-fluid configcadastro">
+    <br>
+<form [formGroup]="dadosUsuario" (ngSubmit)="SalvarUsuario()">
+  <div class="container">
+    <div>
+      <h4>Cadastrar novo Usuário</h4>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <label> Inserir uma Foto: 
+            <input type="file" (change)="uploadFile($event)">
+          </label>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="col-md-3">
+            <label for="nome">Nome: 
+            <input type="text" formControlName="nome">
+            </label>
+            <div *ngIf="!nome.pristine && nome.errors">
+                <p class="texterror" *ngIf="nome.errors.required">Nome é obrigatório!</p>
+                <p class="texterror" *ngIf="nome.errors.minlength">O nome deve ter no mínimo 3 letras!</p>
+                <p class="texterror" *ngIf="nome.errors.maxlength">O nome deve ter no máximo 50 letras!</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="nivel">Nivel: 
+            <input type="number" formControlName="nivel">
+            </label>
+            <div *ngIf="!nivel.pristine && nivel.errors">
+                <p class="texterror" *ngIf="nivel.errors.required">Nivel é obrigatório!</p>
+                <p class="texterror" *ngIf="nivel.errors.nivelInvalido">Nivel Inválido</p>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3">
+            <label for="senha">Senha: 
+            <input type="password" formControlName="senha">
+            </label>
+            <div *ngIf="!senha.pristine && senha.errors">
+                <p class="texterror" *ngIf="senha.errors.required">Senha é obrigatória!</p>
+                <p class="texterror" *ngIf="senha.errors.minlength">A senha deve ter no mínimo 6 caracteres!</p>
+                <p class="texterror" *ngIf="senha.errors.maxlength">A senha deve ter no máximo 12 caracteres!</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="senha">Confirmar Senha: 
+            <input type="password" formControlName="confirmarsenha">
+            </label>
+            <div *ngIf="!confirmarsenha.pristine && confirmarsenha.errors">
+                <p class="texterror" *ngIf="confirmarsenha.errors.required">Confirmar a senha é obrigatório!</p>
+                <p class="texterror" *ngIf="confirmarsenha.errors.naocombinam">Senhas não combinam!</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div>
+        <h6>*favor preencha os campos com os dados requeridos!</h6>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2">
+        <button type="button" class="btn btn-secondary buttonconfig" routerLink="/ministerioAmbiente/login">Voltar</button>
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary buttonconfig" [disabled]="!dadosUsuario.valid">Salvar</button>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+</form>
+</div>

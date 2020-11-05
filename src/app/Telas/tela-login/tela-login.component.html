@@ -1,0 +1,35 @@
+<div class="container-fluid configlogin">
+    <br>
+    <div class="container-fluid">
+        <p class="float-right textconfig">Ainda não possui uma conta? <a routerLink="/ministerioAmbiente/cadastro">Cadastre-se aqui</a></p>
+    </div>
+    <div class="container d-flex aling-itens-center justify-content-center">
+    <form [formGroup]="dadosLogin" (ngSubmit)="Logar()">
+        <h4>
+            Login
+        </h4>
+        <br>
+        <div>
+          <div class="row">
+              <label> Inserir a Foto:
+                  <input type="file" (change)="uploadFile($event)">
+              </label>
+          </div>
+          <div class="row">
+                <label for="nome">Nome: 
+                <input type="text" formControlName="nome">
+                </label>
+          </div>
+          <div class="row">
+                <label for="senha">Senha: 
+                <input type="password" formControlName="senha">
+                </label>
+          </div>
+        </div>
+        <br>
+        <div>
+            <button class="btn btn-primary buttonconfig" [disabled]="!dadosLogin.valid">Logar</button>
+        </div>
+    </form>
+    </div>
+</div>
