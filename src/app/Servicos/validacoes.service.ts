@@ -27,12 +27,12 @@ export class ValidacoesService {
   static SenhasCombinam(senhas: AbstractControl){
     let senha = senhas.get('senha').value;
     let confirmarsenha = senhas.get('confirmarsenha').value;
-
+  
     if(senha === confirmarsenha) {
       return null
     }
     else {
-      senhas.get('confirmarsenha').setErrors({ naoCombinam:true });
+      return senhas.get('confirmarsenha').setErrors({ naoCombinam:true });
     }
   }
 }

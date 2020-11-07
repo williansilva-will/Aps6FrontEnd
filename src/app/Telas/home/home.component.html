@@ -1,12 +1,13 @@
 <header>
     <nav class="confignav">
-        <div class="container-fluid" style="padding-top: 10px;">
+    <div class="container-fluid">
+        <div>
             <h2>Ministério do Meio Ambiente - Governo Federal</h2>
-        </div>
-        <div class="container-fluid" style="padding-top: 30px;">
-            <button class="btn btn-secondary float-right" style="height: 36px;" *ngIf="usuarioAtual != null" (click)="logout()">Logout</button>
+        
+            <button class="btn btn-secondary btn-sm float-right" *ngIf="usuarioAtual != null" (click)="logout()">Logout</button>
             <div class="float-right" style="margin-right: 30px;" *ngIf="usuarioAtual != null"><b>Usuário Logado: {{usuarioAtual.userName}}</b></div>
         </div>
+    </div>
     </nav>
     <div class="container-fluid" style="height: 10px; background-color: dimgray;">
     </div>

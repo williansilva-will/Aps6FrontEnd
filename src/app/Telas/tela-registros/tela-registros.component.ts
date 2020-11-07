@@ -17,28 +17,17 @@ export class TelaRegistrosComponent implements OnInit {
   novoRegistro: FormGroup;
   user: UsuarioAtual;
 
-  constructor(private fb: FormBuilder, private bs: BackendService, private route: Router) { }
+  constructor(private fb: FormBuilder, private bs: BackendService) { }
 
   ngOnInit(): void {
     this.ApanharRegistros();
-    this.AddRegistro();
-    this.GetUsuario();
   }
 
   ApanharRegistros(){
-    var userName = this.user.userName;
-    this.bs.getRegistros(userName).subscribe(data =>{
+    var user = this.bs.PegarUsuario();
+    this.bs.getRegistros(user.userName).subscribe(data =>{
       this.listaRegistros = data;
-      this.recarregarPagina();
     });
-  }
-
-  GetUsuario(){
-    return this.user = this.bs.PegarUsuario();
-  }
-
-  recarregarPagina() {
-    window.location.reload();
   }
 
   SalvarRegistro(){
@@ -54,7 +43,7 @@ export class TelaRegistrosComponent implements OnInit {
     this.bs.postRegistro(registro);
     
     this.novoRegistro.reset();
-    this.recarregarPagina();
+    window.location.reload();
     }
   }
 

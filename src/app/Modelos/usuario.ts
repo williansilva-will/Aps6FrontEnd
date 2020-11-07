@@ -13,6 +13,19 @@ export class NovoUsuario {
     senha: string;
 }
 
+export class LoginUsuario {
+
+    constructor(foto: File, nome: string, senha: string){
+        this.foto = foto;
+        this.nome = nome;
+        this.senha = senha;
+    }
+
+    foto: File;
+    nome: string;
+    senha: string;
+}
+
 export class UsuarioAtual {
 
     constructor(userName: string, password: string){

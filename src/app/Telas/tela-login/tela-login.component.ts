@@ -16,7 +16,7 @@ export class TelaLoginComponent implements OnInit {
 
   dadosLogin: FormGroup;
 
-  constructor(private fb: FormBuilder, private bs: BackendService, private route: Router) { }
+  constructor(private fb: FormBuilder, private bs: BackendService) { }
 
   ngOnInit(): void {
     this.CriarLogin();
@@ -30,7 +30,7 @@ export class TelaLoginComponent implements OnInit {
       login.append("userName", this.dadosLogin.get('nome').value);
       login.append("password", this.dadosLogin.get('senha').value);
 
-      console.log(login);
+      console.log(this.dadosLogin.value);
 
       this.bs.Login(login);
     }

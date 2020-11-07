@@ -11,11 +11,16 @@
 }
 .Containergridconfig{
     background-color: rgb(200, 219, 200);
-    height: 80vh;
+    height: 78vh;
 }
 .buttonconfig{
     padding: 0px;
     border: 2px solid;
     margin: 0px;
     height: 28px;
+}
+.texterror {
+    color: crimson;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
 }

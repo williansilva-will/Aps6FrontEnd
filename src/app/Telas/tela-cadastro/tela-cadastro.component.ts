@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { ValidacoesService } from 'src/app/Servicos/validacoes.service';
 import { BackendService } from 'src/app/Servicos/backend.service';
 import { Router } from '@angular/router';
+import { NovoUsuario } from 'src/app/Modelos/usuario';
 
 @Component({
   selector: 'app-tela-cadastro',
@@ -23,14 +24,14 @@ export class TelaCadastroComponent implements OnInit {
   if(this.dadosUsuario.valid)
   {
     const usuario = new FormData();
-    usuario.append("file", this.dadosUsuario.get('foto').value)
-    usuario.append("userName", this.dadosUsuario.get('nome').value)
-    usuario.append("member", this.dadosUsuario.get('nivel').value)
-    usuario.append("password", this.dadosUsuario.get('senha').value)
+    usuario.append('file', this.dadosUsuario.get('foto').value)
+    usuario.append('userName', this.dadosUsuario.get('nome').value)
+    usuario.append('member', this.dadosUsuario.get('nivel').value)
+    usuario.append('password', this.dadosUsuario.get('senha').value)
 
-    this.bs.postUsuario(usuario).subscribe(data => {
-      this.route.navigate(['ministerioAmbiente/login']);
-    })
+    console.log(usuario);
+
+    this.bs.postUsuario(usuario);
   }
   }
 
@@ -72,11 +73,7 @@ export class TelaCadastroComponent implements OnInit {
         Validators.minLength(6),
       ])
     ]
-    }, 
-    {
-       Validator: ValidacoesService.SenhasCombinam
-    }
-    );
+    }, {validator: ValidacoesService.SenhasCombinam});
   }
 
   get nome(){

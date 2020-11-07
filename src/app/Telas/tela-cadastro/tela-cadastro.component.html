@@ -45,13 +45,13 @@
                 <p class="texterror" *ngIf="senha.errors.maxlength">A senha deve ter no máximo 12 caracteres!</p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <label for="senha">Confirmar Senha: 
             <input type="password" formControlName="confirmarsenha">
             </label>
             <div *ngIf="!confirmarsenha.pristine && confirmarsenha.errors">
                 <p class="texterror" *ngIf="confirmarsenha.errors.required">Confirmar a senha é obrigatório!</p>
-                <p class="texterror" *ngIf="confirmarsenha.errors.naocombinam">Senhas não combinam!</p>
+                <p class="texterror" *ngIf="confirmarsenha.errors.naoCombinam">Senhas não combinam!</p>
             </div>
         </div>
     </div>
