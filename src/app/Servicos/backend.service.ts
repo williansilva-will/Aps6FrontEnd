@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 })
 export class BackendService {
 
-  apiUrlUser = 'localhost:54912/api/user';
-  apiUrlRegistro = 'localhost:54912/api/registro';
+  apiUrlUser = 'http://localhost:54912/api/user';
+  apiUrlRegistro = 'http://localhost:54912/api/registro';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient, private route: Router) {
